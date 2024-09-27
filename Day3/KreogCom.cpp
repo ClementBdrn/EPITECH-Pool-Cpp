@@ -14,15 +14,10 @@ KreogCom::~KreogCom()
 }
 
 // Add a new KreogCom
-void KreogCom::addCom(int x, int y, int serial)
+void KreogCom::addCom(KreogCom *com)
 {
-    KreogCom *newCom = new KreogCom(x, y, serial);
-
-    if (m_nextCom != nullptr)
-    {
-        newCom->m_nextCom = m_nextCom;
-    }
-    m_nextCom = newCom;
+    com->m_nextCom = m_nextCom;
+    m_nextCom = com;
 }
 
 // Remove a KreogCom

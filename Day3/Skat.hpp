@@ -1,6 +1,8 @@
 #ifndef SKAT_HPP
 #define SKAT_HPP
 
+#include "Phaser.hpp"
+#include "KreogCom.hpp"
 #include <iostream>
 
 class Skat
@@ -9,10 +11,12 @@ private:
     // Setup variables
     std::string _name;
     int _stimPaks;
+    Phaser _phaser;
+    KreogCom _kreogCom;
 
 public:
     // Constructor
-    Skat(const std::string &name = "bob", int stimPaks = 15);
+    Skat(const std::string &name, int stimPaks, int seria, int x, int y, Phaser::AmmoType type);
 
     // Destructor
     ~Skat();
@@ -37,6 +41,12 @@ public:
 
     // Print the number of stimpaks remaining
     void status() const;
+
+    // Phaser & KreogCom methods
+    void fire();
+    void locate();
+    void reload();
+    KreogCom &com();
 };
 
 #endif

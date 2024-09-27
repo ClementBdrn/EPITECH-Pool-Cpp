@@ -19,7 +19,7 @@ public:
     ~KreogCom();
 
     // Creates a new KreogCom
-    void addCom(int x, int y, int serial);
+    void addCom(KreogCom *com);
     void removeCom();
 
     // Return the ptr of the KreogCom

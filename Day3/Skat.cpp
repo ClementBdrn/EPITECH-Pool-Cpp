@@ -1,7 +1,7 @@
 #include "Skat.hpp"
 
 // Constructor
-Skat::Skat(const std::string &name, int stimPaks) : _name(name), _stimPaks(stimPaks) {}
+Skat::Skat(const std::string &name, int stimPaks, int serial, int x, int y, Phaser::AmmoType type) : _name(name), _stimPaks(stimPaks), _phaser(20, type), _kreogCom(x, y, serial) {}
 
 // Destructor
 Skat::~Skat() {}
@@ -70,4 +70,24 @@ void Skat::useStimPaks()
 void Skat::status() const
 {
     std::cout << "Soldier " << _name << " reporting " << _stimPaks << " stimpaks remaining sir!" << std::endl;
+}
+
+void Skat::fire()
+{
+    _phaser.fire();
+}
+
+void Skat::locate()
+{
+    _kreogCom.locateSquad();
+}
+
+void Skat::reload()
+{
+    _phaser.reload();
+}
+
+KreogCom &Skat::com()
+{
+    return _kreogCom;
 }
